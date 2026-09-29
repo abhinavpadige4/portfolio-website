@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio — developer, projects, skills, contact.">
+<title>Portfolio — Abhinav Padige</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="nav"><a class="logo" href="#top">AP</a>
+<nav id="menu"><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
+<button id="menuBtn" aria-label="Menu">☰</button></header>
+<main id="top">
+<section class="hero"><h1>Abhinav Padige</h1><p class="sub">Full-stack developer — I build fast, minimal web apps.</p>
+<p><a class="cta" href="#projects">View Work</a> <a class="cta ghost" href="#contact">Contact Me</a></p></section>
+<section id="about"><h2>About</h2><p>Developer working across Python, JS/TS and cloud deploys. I like quiet-luxury design: whitespace, one accent, motion with purpose. Currently building NeuroVerse AI OS — multi-agent orchestration with LangGraph + A2A.</p></section>
+<section id="projects"><h2>Projects</h2><div class="grid">
+<article><h3>NeuroVerse AI OS</h3><p>Multi-agent task runner: research → plan → code → monitor, with GitHub + Vercel deploys.</p><p class="tags">Python · LangGraph · FastAPI</p></article>
+<article><h3>Portfolio Website</h3><p>This site. Static HTML/CSS/JS, no build step, deploys anywhere.</p><p class="tags">HTML · CSS · JS</p></article>
+<article><h3>Study Plans Pipeline</h3><p>Planner agent turning interview prep into day-by-day Notion + Calendar schedules.</p><p class="tags">LLM · Notion · Calendar</p></article>
+</div></section>
+<section id="skills"><h2>Skills</h2><ul class="chips"><li>Python</li><li>TypeScript</li><li>FastAPI</li><li>React</li><li>Docker</li><li>Vercel</li><li>LangGraph</li></ul></section>
+<section id="contact"><h2>Contact</h2><p><a href="mailto:hello@example.com">hello@example.com</a> · <a href="https://github.com/abhinavpadige4">GitHub</a> · <a href="https://linkedin.com">LinkedIn</a></p>
+<form id="contactForm"><input required name="name" placeholder="Name" aria-label="Name"><input required type="email" name="email" placeholder="Email" aria-label="Email"><textarea required name="msg" placeholder="Message" aria-label="Message"></textarea><button type="submit">Send</button><p id="formMsg" role="status"></p></form></section>
+</main>
+<footer>© 2026 Abhinav Padige</footer>
+<script src="script.js"></script>
+</body>
+</html>
