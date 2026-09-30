@@ -5,56 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/skills.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <script defer src="js/main.js"></script>
 </head>
-<body class="bg-background text-text font-base">
-    <header class="hero-section bg-primary text-white py-16 text-center">
-        <h1 class="hero-title text-4xl font-heading mb-4">Welcome to My Portfolio</h1>
-        <p class="hero-description text-lg">Explore my projects, skills, and get in touch.</p>
-        <nav aria-label="Main Navigation">
-            <ul class="flex justify-center mt-8">
-                <li><a href="#projects" class="nav-link px-4 py-2 rounded hover:bg-muted">Projects</a></li>
-                <li><a href="#skills" class="nav-link px-4 py-2 rounded hover:bg-muted">Skills</a></li>
-                <li><a href="#contact" class="nav-link px-4 py-2 rounded hover:bg-muted">Contact</a></li>
+<body class="bg-background text-text font-body">
+    <header class="bg-primary text-surface">
+        <nav class="container mx-auto px-md py-sm flex justify-between items-center">
+            <h1 class="text-xl font-heading">My Portfolio</h1>
+            <button id="menu-toggle" aria-label="Toggle Menu" class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            <ul id="menu" class="hidden md:flex space-x-lg">
+                <li><a href="#projects" class="hover:text-secondary">Projects</a></li>
+                <li><a href="#skills" class="hover:text-secondary">Skills</a></li>
+                <li><a href="#contact" class="hover:text-secondary">Contact</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <section id="projects" class="projects-section py-16">
-            <h2 class="section-title text-3xl font-heading mb-8">Projects</h2>
-            <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8">
-                <article class="project-card p-8 bg-white shadow-md rounded">
-                    <h3 class="project-title text-xl font-heading mb-4">Project One</h3>
-                    <p class="project-description">Description of project one.</p>
+    <section id="hero" class="hero-section">
+        <div class="container mx-auto px-md py-lg text-center">
+            <h2 class="text-4xl font-heading mb-md">Welcome to My Portfolio</h2>
+            <p class="text-lg mb-lg">Discover my latest projects and skills.</p>
+            <a href="#projects" class="btn bg-secondary text-surface px-lg py-sm rounded-full hover:bg-primary transition-colors">View Projects</a>
+        </div>
+    </section>
+    <section id="projects" class="projects-section">
+        <div class="container mx-auto px-md py-lg">
+            <h2 class="text-3xl font-heading mb-md">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+                <article class="project-card">
+                    <h3 class="text-xl font-heading mb-sm">Project One</h3>
+                    <p class="mb-sm">A brief description of project one.</p>
+                    <a href="#" class="btn bg-secondary text-surface px-lg py-sm rounded-full hover:bg-primary transition-colors">Learn More</a>
                 </article>
-                <article class="project-card p-8 bg-white shadow-md rounded">
-                    <h3 class="project-title text-xl font-heading mb-4">Project Two</h3>
-                    <p class="project-description">Description of project two.</p>
+                <article class="project-card">
+                    <h3 class="text-xl font-heading mb-sm">Project Two</h3>
+                    <p class="mb-sm">A brief description of project two.</p>
+                    <a href="#" class="btn bg-secondary text-surface px-lg py-sm rounded-full hover:bg-primary transition-colors">Learn More</a>
+                </article>
+                <article class="project-card">
+                    <h3 class="text-xl font-heading mb-sm">Project Three</h3>
+                    <p class="mb-sm">A brief description of project three.</p>
+                    <a href="#" class="btn bg-secondary text-surface px-lg py-sm rounded-full hover:bg-primary transition-colors">Learn More</a>
                 </article>
             </div>
-        </section>
-        <section id="skills" class="skills-section py-16">
-            <h2 class="section-title text-3xl font-heading mb-8">Skills</h2>
-            <ul class="skills-list flex flex-wrap gap-4">
-                <li class="skill-item bg-white shadow-md rounded p-4">HTML</li>
-                <li class="skill-item bg-white shadow-md rounded p-4">CSS</li>
-                <li class="skill-item bg-white shadow-md rounded p-4">JavaScript</li>
-                <li class="skill-item bg-white shadow-md rounded p-4">Tailwind CSS</li>
-            </ul>
-        </section>
-        <section id="contact" class="contact-section py-16">
-            <h2 class="section-title text-3xl font-heading mb-8">Contact</h2>
-            <form id="contact-form" class="contact-form flex flex-col gap-4">
-                <label for="name" class="sr-only">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" class="contact-input p-4 border rounded" required>
-                <label for="email" class="sr-only">Email</label>
-                <input type="email" id="email" name="email" placeholder="Your Email" class="contact-input p-4 border rounded" required>
-                <label for="message" class="sr-only">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="Your Message" class="contact-input p-4 border rounded" required></textarea>
-                <button type="submit" class="contact-button bg-primary text-white p-4 rounded hover:bg-muted">Send Message</button>
+        </div>
+    </section>
+    <section id="skills" class="skills-section">
+        <div class="container mx-auto px-md py-lg">
+            <h2 class="text-3xl font-heading mb-md">Skills</h2>
+            <div class="flex flex-wrap gap-md">
+                <span class="skill-badge bg-secondary text-surface px-md py-sm rounded-full">HTML</span>
+                <span class="skill-badge bg-secondary text-surface px-md py-sm rounded-full">CSS</span>
+                <span class="skill-badge bg-secondary text-surface px-md py-sm rounded-full">JavaScript</span>
+                <span class="skill-badge bg-secondary text-surface px-md py-sm rounded-full">React</span>
+                <span class="skill-badge bg-secondary text-surface px-md py-sm rounded-full">Node.js</span>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact-section">
+        <div class="container mx-auto px-md py-lg">
+            <h2 class="text-3xl font-heading mb-md">Contact</h2>
+            <form id="contact-form" class="space-y-md">
+                <div>
+                    <label for="name" class="block mb-sm">Name</label>
+                    <input type="text" id="name" name="name" required class="input w-full px-md py-sm rounded-full border border-muted focus:outline-none focus:border-secondary">
+                </div>
+                <div>
+                    <label for="email" class="block mb-sm">Email</label>
+                    <input type="email" id="email" name="email" required class="input w-full px-md py-sm rounded-full border border-muted focus:outline-none focus:border-secondary">
+                </div>
+                <div>
+                    <label for="message" class="block mb-sm">Message</label>
+                    <textarea id="message" name="message" rows="4" required class="input w-full px-md py-sm rounded-full border border-muted focus:outline-none focus:border-secondary"></textarea>
+                </div>
+                <button type="submit" class="btn bg-secondary text-surface px-lg py-sm rounded-full hover:bg-primary transition-colors">Send Message</button>
             </form>
-        </section>
-    </main>
-    <script src="./script.js" type="module"></script>
+        </div>
+    </section>
+    <footer class="bg-primary text-surface text-center py-md">
+        <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+    </footer>
 </body>
 </html>
