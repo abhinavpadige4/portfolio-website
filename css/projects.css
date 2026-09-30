@@ -1,0 +1,78 @@
+/* Projects Section Styles */
+
+.projects-section {
+  padding: 3rem 1rem;
+  background-color: #F9FAFB;
+}
+
+.projects-heading {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #111827;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: 1rem;
+}
+
+.project-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.project-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #6B7280;
+}
+
+@media (min-width: 768px) {
+  .projects-heading {
+    font-size: 3rem;
+  }
+
+  .project-card {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects-heading {
+    font-size: 3.5rem;
+  }
+
+  .project-card {
+    max-width: 350px;
+  }
+}
