@@ -13,60 +13,82 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const form = document.getElementById('contact-form');
-  const nameInput = document.getElementById('name');
   const emailInput = document.getElementById('email');
   const messageInput = document.getElementById('message');
   const errorContainer = document.getElementById('error-container');
+  const successMessage = document.getElementById('success-message');
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     let isValid = true;
     errorContainer.textContent = '';
-
-    if (nameInput.value.trim() === '') {
-      isValid = false;
-      errorContainer.textContent += 'Name is required.\n';
-    }
+    successMessage.textContent = '';
 
     if (!validateEmail(emailInput.value)) {
       isValid = false;
-      errorContainer.textContent += 'Valid email is required.\n';
+      errorContainer.textContent += 'Please enter a valid email address.\n';
     }
 
     if (messageInput.value.trim() === '') {
       isValid = false;
-      errorContainer.textContent += 'Message is required.\n';
+      errorContainer.textContent += 'Please enter a message.\n';
     }
 
     if (isValid) {
-      alert('Form submitted successfully!');
+      successMessage.textContent = 'Thank you! Your message has been sent.';
       form.reset();
     }
   });
 
   const validateEmail = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return re.test(String(email).toLowerCase());
   };
 
-  // Accessibility enhancements
-  const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
-  const focusableElements = document.querySelectorAll(focusableElementsString);
-  const firstFocusableElement = focusableElements[0];
-  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+  const modal = document.getElementById('modal');
+  const openModalBtn = document.getElementById('open-modal');
+  const closeModalBtn = document.getElementById('close-modal');
+  const focusableElementsString = 'button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])';
+  let focusableElements = [];
+  let focusedElementBeforeModal;
 
-  document.addEventListener('keydown', (e) => {
+  const trapFocus = () => {
+    focusableElements = modal.querySelectorAll(focusableElementsString);
+    focusableElements = Array.prototype.slice.call(focusableElements);
+    focusedElementBeforeModal = document.activeElement;
+    focusableElements[0].focus();
+  };
+
+  const releaseFocus = () => {
+    focusedElementBeforeModal.focus();
+  };
+
+  openModalBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+    trapFocus();
+  });
+
+  closeModalBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    releaseFocus();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.style.display === 'block') {
+      modal.style.display = 'none';
+      releaseFocus();
+    }
+  });
+
+  modal.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
-      if (e.shiftKey) { // shift + tab
-        if (document.activeElement === firstFocusableElement) {
-          lastFocusableElement.focus();
-          e.preventDefault();
-        }
-      } else { // tab
-        if (document.activeElement === lastFocusableElement) {
-          firstFocusableElement.focus();
-          e.preventDefault();
-        }
+      e.preventDefault();
+      const focusedIndex = focusableElements.indexOf(document.activeElement);
+      let nextIndex = focusedIndex + 1;
+      if (nextIndex >= focusableElements.length) {
+        nextIndex = 0;
       }
+      focusableElements[nextIndex].focus();
     }
   });
 });
