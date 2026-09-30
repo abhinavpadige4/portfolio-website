@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
   const navLinks = document.querySelectorAll('.nav-link');
@@ -6,56 +6,65 @@ document.addEventListener('DOMContentLoaded', () => {
   const nameInput = document.getElementById('name');
   const emailInput = document.getElementById('email');
   const messageInput = document.getElementById('message');
-  const liveRegion = document.getElementById('live-region');
+  const alertRegion = document.getElementById('alert-region');
 
-  function toggleMobileMenu() {
+  mobileMenuButton.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
     mobileMenuButton.setAttribute('aria-expanded', mobileMenu.classList.contains('hidden') ? 'false' : 'true');
-  }
+  });
 
-  function handleNavLinkClick(event) {
-    event.preventDefault();
-    const targetId = event.target.getAttribute('href').substring(1);
-    const targetElement = document.getElementById(targetId);
-    targetElement.scrollIntoView({ behavior: 'smooth' });
-    mobileMenu.classList.add('hidden');
-    mobileMenuButton.setAttribute('aria-expanded', 'false');
-  }
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+    });
+  });
 
-  function validateEmail(email) {
-    return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
-  }
-
-  function handleFormSubmit(event) {
+  form.addEventListener('submit', function(event) {
     event.preventDefault();
     let isValid = true;
-    if (nameInput.value.trim() === '') {
+    if (!nameInput.value.trim()) {
       isValid = false;
-      nameInput.setCustomValidity('Name is required.');
+      nameInput.classList.add('border-red-500');
     } else {
-      nameInput.setCustomValidity('');
+      nameInput.classList.remove('border-red-500');
     }
     if (!validateEmail(emailInput.value)) {
       isValid = false;
-      emailInput.setCustomValidity('Please enter a valid email address.');
+      emailInput.classList.add('border-red-500');
     } else {
-      emailInput.setCustomValidity('');
+      emailInput.classList.remove('border-red-500');
     }
-    if (messageInput.value.trim() === '') {
+    if (!messageInput.value.trim()) {
       isValid = false;
-      messageInput.setCustomValidity('Message is required.');
+      messageInput.classList.add('border-red-500');
     } else {
-      messageInput.setCustomValidity('');
+      messageInput.classList.remove('border-red-500');
     }
     if (isValid) {
-      liveRegion.textContent = 'Thank you! Your message has been sent.';
+      showAlert('success', 'Message sent successfully!');
       form.reset();
     } else {
-      liveRegion.textContent = 'Please fill out all fields correctly.';
+      showAlert('error', 'Please fill in all fields correctly.');
     }
+  });
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
-  mobileMenuButton.addEventListener('click', toggleMobileMenu);
-  navLinks.forEach(link => link.addEventListener('click', handleNavLinkClick));
-  form.addEventListener('submit', handleFormSubmit);
+  function showAlert(type, message) {
+    alertRegion.textContent = message;
+    alertRegion.setAttribute('aria-live', 'assertive');
+    alertRegion.classList.remove('bg-green-100', 'bg-red-100', 'text-green-800', 'text-red-800');
+    if (type === 'success') {
+      alertRegion.classList.add('bg-green-100', 'text-green-800');
+    } else {
+      alertRegion.classList.add('bg-red-100', 'text-red-800');
+    }
+    setTimeout(() => {
+      alertRegion.textContent = '';
+      alertRegion.setAttribute('aria-live', 'off');
+    }, 3000);
+  }
 });
