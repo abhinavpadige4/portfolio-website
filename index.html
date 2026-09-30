@@ -1,30 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Portfolio — developer, projects, skills, contact.">
-<title>Portfolio — Abhinav Padige</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-<header class="nav"><a class="logo" href="#top">AP</a>
-<nav id="menu"><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
-<button id="menuBtn" aria-label="Menu">☰</button></header>
-<main id="top">
-<section class="hero"><h1>Abhinav Padige</h1><p class="sub">Full-stack developer — I build fast, minimal web apps.</p>
-<p><a class="cta" href="#projects">View Work</a> <a class="cta ghost" href="#contact">Contact Me</a></p></section>
-<section id="about"><h2>About</h2><p>Developer working across Python, JS/TS and cloud deploys. I like quiet-luxury design: whitespace, one accent, motion with purpose. Currently building NeuroVerse AI OS — multi-agent orchestration with LangGraph + A2A.</p></section>
-<section id="projects"><h2>Projects</h2><div class="grid">
-<article><h3>NeuroVerse AI OS</h3><p>Multi-agent task runner: research → plan → code → monitor, with GitHub + Vercel deploys.</p><p class="tags">Python · LangGraph · FastAPI</p></article>
-<article><h3>Portfolio Website</h3><p>This site. Static HTML/CSS/JS, no build step, deploys anywhere.</p><p class="tags">HTML · CSS · JS</p></article>
-<article><h3>Study Plans Pipeline</h3><p>Planner agent turning interview prep into day-by-day Notion + Calendar schedules.</p><p class="tags">LLM · Notion · Calendar</p></article>
-</div></section>
-<section id="skills"><h2>Skills</h2><ul class="chips"><li>Python</li><li>TypeScript</li><li>FastAPI</li><li>React</li><li>Docker</li><li>Vercel</li><li>LangGraph</li></ul></section>
-<section id="contact"><h2>Contact</h2><p><a href="mailto:hello@example.com">hello@example.com</a> · <a href="https://github.com/abhinavpadige4">GitHub</a> · <a href="https://linkedin.com">LinkedIn</a></p>
-<form id="contactForm"><input required name="name" placeholder="Name" aria-label="Name"><input required type="email" name="email" placeholder="Email" aria-label="Email"><textarea required name="msg" placeholder="Message" aria-label="Message"></textarea><button type="submit">Send</button><p id="formMsg" role="status"></p></form></section>
-</main>
-<footer>© 2026 Abhinav Padige</footer>
-<script src="script.js"></script>
+<body class="body">
+    <header class="header">
+        <div class="container">
+            <a href="#" class="header__logo">My Portfolio</a>
+            <button id="menu-toggle" aria-label="Toggle navigation" class="header__toggle">☰
+            </button>
+            <nav id="nav-menu" class="header__nav" aria-label="Main Navigation">
+                <ul class="header__list">
+                    <li><a href="#hero" class="header__link">Home</a></li>
+                    <li><a href="#projects" class="header__link">Projects</a></li>
+                    <li><a href="#skills" class="header__link">Skills</a></li>
+                    <li><a href="#contact" class="header__link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1 class="hero__title">Welcome to My Portfolio</h1>
+            <p class="hero__description">Discover my projects, skills, and how to get in touch.</p>
+            <a href="#projects" class="hero__cta">View Projects</a>
+        </div>
+    </section>
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="projects__title">Projects</h2>
+            <div class="projects__grid">
+                <article class="project">
+                    <h3 class="project__name">Project One</h3>
+                    <p class="project__description">A brief description of project one.</p>
+                </article>
+                <article class="project">
+                    <h3 class="project__name">Project Two</h3>
+                    <p class="project__description">A brief description of project two.</p>
+                </article>
+                <article class="project">
+                    <h3 class="project__name">Project Three</h3>
+                    <p class="project__description">A brief description of project three.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="skills__title">Skills</h2>
+            <ul class="skills__list">
+                <li class="skill">HTML</li>
+                <li class="skill">CSS</li>
+                <li class="skill">JavaScript</li>
+                <li class="skill">Tailwind CSS</li>
+            </ul>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="contact__title">Contact Me</h2>
+            <form id="contact-form" class="contact__form">
+                <label for="name" class="contact__label">Name</label>
+                <input type="text" id="name" name="name" required class="contact__input">
+                <label for="email" class="contact__label">Email</label>
+                <input type="email" id="email" name="email" required class="contact__input">
+                <label for="message" class="contact__label">Message</label>
+                <textarea id="message" name="message" rows="5" required class="contact__textarea"></textarea>
+                <button type="submit" class="contact__submit">Send Message</button>
+                <div id="live-region" aria-live="polite" class="contact__live-region"></div>
+            </form>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__text">&copy; 2023 My Portfolio</p>
+        </div>
+    </footer>
+    <script src="./script.js" defer></script>
 </body>
 </html>
