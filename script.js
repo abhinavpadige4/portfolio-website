@@ -1,63 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const mobileMenuButton = document.querySelector('.js-menu-toggle');
-  const mobileMenu = document.querySelector('.js-mobile-menu');
-  const navLinks = document.querySelectorAll('.js-nav-link');
-  const form = document.querySelector('.js-contact-form');
-  const formMessage = document.querySelector('.js-form-message');
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const form = document.getElementById('contact-form');
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const messageInput = document.getElementById('message');
+  const liveRegion = document.getElementById('live-region');
 
-  // Mobile Menu Toggle
-  mobileMenuButton.addEventListener('click', () => {
+  function toggleMobileMenu() {
     mobileMenu.classList.toggle('hidden');
     mobileMenuButton.setAttribute('aria-expanded', mobileMenu.classList.contains('hidden') ? 'false' : 'true');
-  });
+  }
 
-  // Close mobile menu on link click
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-      mobileMenuButton.setAttribute('aria-expanded', 'false');
-    });
-  });
+  function handleNavLinkClick(event) {
+    event.preventDefault();
+    const targetId = event.target.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+    mobileMenu.classList.add('hidden');
+    mobileMenuButton.setAttribute('aria-expanded', 'false');
+  }
 
-  // Smooth Scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
+  function validateEmail(email) {
+    return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
+  }
 
-  // Form Validation
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+  function handleFormSubmit(event) {
+    event.preventDefault();
     let isValid = true;
-    const formData = new FormData(form);
-    const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-
-    formData.forEach((value, key) => {
-      const input = form.querySelector(`[name='${key}']`);
-      if (!value.trim()) {
-        isValid = false;
-        input.setCustomValidity('This field is required.');
-        input.reportValidity();
-      } else if (key === 'email' && !emailPattern.test(value)) {
-        isValid = false;
-        input.setCustomValidity('Please enter a valid email address.');
-        input.reportValidity();
-      } else {
-        input.setCustomValidity('');
-      }
-    });
-
-    if (isValid) {
-      form.reset();
-      formMessage.textContent = 'Thank you! Your message has been sent.';
-      formMessage.setAttribute('aria-live', 'assertive');
-      setTimeout(() => {
-        formMessage.textContent = '';
-      }, 5000);
+    if (nameInput.value.trim() === '') {
+      isValid = false;
+      nameInput.setCustomValidity('Name is required.');
+    } else {
+      nameInput.setCustomValidity('');
     }
-  });
+    if (!validateEmail(emailInput.value)) {
+      isValid = false;
+      emailInput.setCustomValidity('Please enter a valid email address.');
+    } else {
+      emailInput.setCustomValidity('');
+    }
+    if (messageInput.value.trim() === '') {
+      isValid = false;
+      messageInput.setCustomValidity('Message is required.');
+    } else {
+      messageInput.setCustomValidity('');
+    }
+    if (isValid) {
+      liveRegion.textContent = 'Thank you! Your message has been sent.';
+      form.reset();
+    } else {
+      liveRegion.textContent = 'Please fill out all fields correctly.';
+    }
+  }
+
+  mobileMenuButton.addEventListener('click', toggleMobileMenu);
+  navLinks.forEach(link => link.addEventListener('click', handleNavLinkClick));
+  form.addEventListener('submit', handleFormSubmit);
 });
