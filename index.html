@@ -15,12 +15,12 @@
     <header class="bg-primary text-surface">
         <nav class="container mx-auto px-md py-sm flex justify-between items-center">
             <h1 class="text-xl font-heading">My Portfolio</h1>
-            <button id="menu-toggle" aria-label="Toggle Menu" class="md:hidden">
+            <button id="menu-toggle" aria-label="Toggle menu" class="md:hidden">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                 </svg>
             </button>
-            <ul id="menu" class="hidden md:flex space-x-lg">
+            <ul id="menu" class="hidden md:flex space-x-md">
                 <li><a href="#projects" class="hover:text-secondary">Projects</a></li>
                 <li><a href="#skills" class="hover:text-secondary">Skills</a></li>
                 <li><a href="#contact" class="hover:text-secondary">Contact</a></li>
@@ -30,28 +30,28 @@
     <section id="hero" class="hero-section">
         <div class="container mx-auto px-md py-lg text-center">
             <h2 class="text-4xl font-heading mb-md">Welcome to My Portfolio</h2>
-            <p class="text-lg mb-lg">Discover my latest projects and skills.</p>
-            <a href="#projects" class="btn bg-secondary text-surface px-lg py-sm rounded-full hover:bg-primary transition-colors">View Projects</a>
+            <p class="text-lg mb-lg">Discover my projects, skills, and how to get in touch.</p>
+            <a href="#projects" class="btn">View Projects</a>
         </div>
     </section>
     <section id="projects" class="projects-section">
         <div class="container mx-auto px-md py-lg">
             <h2 class="text-3xl font-heading mb-md">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
                 <article class="project-card">
-                    <h3 class="text-xl font-heading mb-sm">Project One</h3>
-                    <p class="mb-sm">A brief description of project one.</p>
-                    <a href="#" class="btn bg-secondary text-surface px-lg py-sm rounded-full hover:bg-primary transition-colors">Learn More</a>
+                    <h3 class="text-xl font-heading mb-sm">Project 1</h3>
+                    <p class="mb-sm">A brief description of project 1.</p>
+                    <a href="#" class="btn">Learn More</a>
                 </article>
                 <article class="project-card">
-                    <h3 class="text-xl font-heading mb-sm">Project Two</h3>
-                    <p class="mb-sm">A brief description of project two.</p>
-                    <a href="#" class="btn bg-secondary text-surface px-lg py-sm rounded-full hover:bg-primary transition-colors">Learn More</a>
+                    <h3 class="text-xl font-heading mb-sm">Project 2</h3>
+                    <p class="mb-sm">A brief description of project 2.</p>
+                    <a href="#" class="btn">Learn More</a>
                 </article>
                 <article class="project-card">
-                    <h3 class="text-xl font-heading mb-sm">Project Three</h3>
-                    <p class="mb-sm">A brief description of project three.</p>
-                    <a href="#" class="btn bg-secondary text-surface px-lg py-sm rounded-full hover:bg-primary transition-colors">Learn More</a>
+                    <h3 class="text-xl font-heading mb-sm">Project 3</h3>
+                    <p class="mb-sm">A brief description of project 3.</p>
+                    <a href="#" class="btn">Learn More</a>
                 </article>
             </div>
         </div>
@@ -60,11 +60,11 @@
         <div class="container mx-auto px-md py-lg">
             <h2 class="text-3xl font-heading mb-md">Skills</h2>
             <div class="flex flex-wrap gap-md">
-                <span class="skill-badge bg-secondary text-surface px-md py-sm rounded-full">HTML</span>
-                <span class="skill-badge bg-secondary text-surface px-md py-sm rounded-full">CSS</span>
-                <span class="skill-badge bg-secondary text-surface px-md py-sm rounded-full">JavaScript</span>
-                <span class="skill-badge bg-secondary text-surface px-md py-sm rounded-full">React</span>
-                <span class="skill-badge bg-secondary text-surface px-md py-sm rounded-full">Node.js</span>
+                <span class="skill-badge">HTML</span>
+                <span class="skill-badge">CSS</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">Tailwind CSS</span>
+                <span class="skill-badge">React</span>
             </div>
         </div>
     </section>
@@ -74,17 +74,17 @@
             <form id="contact-form" class="space-y-md">
                 <div>
                     <label for="name" class="block mb-sm">Name</label>
-                    <input type="text" id="name" name="name" required class="input w-full px-md py-sm rounded-full border border-muted focus:outline-none focus:border-secondary">
+                    <input type="text" id="name" name="name" required class="input-field">
                 </div>
                 <div>
                     <label for="email" class="block mb-sm">Email</label>
-                    <input type="email" id="email" name="email" required class="input w-full px-md py-sm rounded-full border border-muted focus:outline-none focus:border-secondary">
+                    <input type="email" id="email" name="email" required class="input-field">
                 </div>
                 <div>
                     <label for="message" class="block mb-sm">Message</label>
-                    <textarea id="message" name="message" rows="4" required class="input w-full px-md py-sm rounded-full border border-muted focus:outline-none focus:border-secondary"></textarea>
+                    <textarea id="message" name="message" rows="4" required class="input-field"></textarea>
                 </div>
-                <button type="submit" class="btn bg-secondary text-surface px-lg py-sm rounded-full hover:bg-primary transition-colors">Send Message</button>
+                <button type="submit" class="btn">Send Message</button>
             </form>
         </div>
     </section>
