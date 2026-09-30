@@ -3,95 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>My Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/hero.css">
-    <link rel="stylesheet" href="css/projects.css">
-    <link rel="stylesheet" href="css/skills.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <script defer src="js/main.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-background text-text">
-    <header class="bg-primary text-white">
-        <nav class="container mx-auto px-md py-sm flex justify-between items-center">
-            <h1 class="text-xl font-bold">My Portfolio</h1>
-            <button id="menu-toggle" aria-label="Toggle Navigation" class="md:hidden">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+<body class="bg-colorBackground text-colorText font-base">
+    <header class="bg-colorPrimary py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-heading text-colorBackground">My Portfolio</h1>
+            <button id="menu-toggle" aria-label="Toggle navigation" class="md:hidden focus:outline focus:outline-offset-2 focus:outline-2 focus:outline-colorPrimary">
+                <svg class="w-6 h-6 fill-current text-colorBackground" viewBox="0 0 24 24">
+                    <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
                 </svg>
             </button>
-            <ul id="menu" class="hidden md:flex space-x-md">
-                <li><a href="#hero" class="hover:text-secondary">Home</a></li>
-                <li><a href="#projects" class="hover:text-secondary">Projects</a></li>
-                <li><a href="#skills" class="hover:text-secondary">Skills</a></li>
-                <li><a href="#contact" class="hover:text-secondary">Contact</a></li>
-            </ul>
-        </nav>
+            <nav id="menu" class="hidden md:flex space-x-4">
+                <a href="#projects" class="text-colorBackground hover:text-colorMuted">Projects</a>
+                <a href="#skills" class="text-colorBackground hover:text-colorMuted">Skills</a>
+                <a href="#contact" class="text-colorBackground hover:text-colorMuted">Contact</a>
+            </nav>
+        </div>
     </header>
-    <section id="hero" class="hero-section">
-        <div class="container mx-auto px-md py-lg text-center">
-            <h2 class="text-4xl font-bold mb-md">Welcome to My Portfolio</h2>
-            <p class="text-lg mb-lg">Discover my projects, skills, and how to get in touch.</p>
-            <a href="#projects" class="btn">View Projects</a>
+    <section id="hero" class="py-16 bg-cover bg-center" style="background-image: url('https://via.placeholder.com/1920x1080');">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-heading text-colorBackground mb-4">Welcome to My Portfolio</h2>
+            <p class="text-lg text-colorBackground">Discover my projects, skills, and how to get in touch.</p>
         </div>
     </section>
-    <section id="projects" class="projects-section">
-        <div class="container mx-auto px-md py-lg">
-            <h2 class="text-3xl font-bold mb-md">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-                <article class="project-card">
-                    <h3 class="text-xl font-bold mb-sm">Project 1</h3>
-                    <p class="mb-sm">A brief description of project 1.</p>
-                    <a href="#" class="btn">Learn More</a>
+    <section id="projects" class="py-16">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-heading mb-8">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <article class="bg-colorMuted p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-heading mb-4">Project One</h3>
+                    <p class="mb-4">A brief description of project one, highlighting key features and technologies used.</p>
+                    <a href="#" class="text-colorPrimary hover:text-colorMuted">Learn More</a>
                 </article>
-                <article class="project-card">
-                    <h3 class="text-xl font-bold mb-sm">Project 2</h3>
-                    <p class="mb-sm">A brief description of project 2.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </article>
-                <article class="project-card">
-                    <h3 class="text-xl font-bold mb-sm">Project 3</h3>
-                    <p class="mb-sm">A brief description of project 3.</p>
-                    <a href="#" class="btn">Learn More</a>
+                <article class="bg-colorMuted p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-heading mb-4">Project Two</h3>
+                    <p class="mb-4">A brief description of project two, highlighting key features and technologies used.</p>
+                    <a href="#" class="text-colorPrimary hover:text-colorMuted">Learn More</a>
                 </article>
             </div>
         </div>
     </section>
-    <section id="skills" class="skills-section">
-        <div class="container mx-auto px-md py-lg">
-            <h2 class="text-3xl font-bold mb-md">Skills</h2>
-            <div class="flex flex-wrap gap-md">
-                <span class="skill-badge">HTML</span>
-                <span class="skill-badge">CSS</span>
-                <span class="skill-badge">JavaScript</span>
-                <span class="skill-badge">Tailwind CSS</span>
-                <span class="skill-badge">React</span>
-                <span class="skill-badge">Node.js</span>
-            </div>
+    <section id="skills" class="py-16 bg-colorMuted">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-heading mb-8 text-colorBackground">Skills</h2>
+            <ul class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <li class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-heading mb-4 text-colorText">HTML/CSS</h3>
+                    <p class="text-colorText">Proficient in creating responsive and accessible web designs using HTML and CSS.</p>
+                </li>
+                <li class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-heading mb-4 text-colorText">JavaScript</h3>
+                    <p class="text-colorText">Experienced in writing clean, efficient JavaScript for interactive web applications.</p>
+                </li>
+                <li class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-heading mb-4 text-colorText">Tailwind CSS</h3>
+                    <p class="text-colorText">Skilled in using Tailwind CSS for rapid UI development and consistent styling.</p>
+                </li>
+            </ul>
         </div>
     </section>
-    <section id="contact" class="contact-section">
-        <div class="container mx-auto px-md py-lg">
-            <h2 class="text-3xl font-bold mb-md">Contact Me</h2>
-            <form id="contact-form" class="space-y-md">
-                <div>
-                    <label for="name" class="block mb-sm">Name</label>
-                    <input type="text" id="name" name="name" required class="input-field">
+    <section id="contact" class="py-16">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-heading mb-8">Contact</h2>
+            <form id="contact-form" class="max-w-md mx-auto">
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                    <input type="text" id="name" name="name" required class="w-full p-3 border border-colorMuted rounded-lg focus:outline focus:outline-offset-2 focus:outline-2 focus:outline-colorPrimary">
                 </div>
-                <div>
-                    <label for="email" class="block mb-sm">Email</label>
-                    <input type="email" id="email" name="email" required class="input-field">
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                    <input type="email" id="email" name="email" required class="w-full p-3 border border-colorMuted rounded-lg focus:outline focus:outline-offset-2 focus:outline-2 focus:outline-colorPrimary">
                 </div>
-                <div>
-                    <label for="message" class="block mb-sm">Message</label>
-                    <textarea id="message" name="message" rows="4" required class="input-field"></textarea>
+                <div class="mb-4">
+                    <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                    <textarea id="message" name="message" rows="4" required class="w-full p-3 border border-colorMuted rounded-lg focus:outline focus:outline-offset-2 focus:outline-2 focus:outline-colorPrimary"></textarea>
                 </div>
-                <button type="submit" class="btn">Send Message</button>
+                <button type="submit" class="bg-colorPrimary text-colorBackground px-4 py-2 rounded-lg hover:bg-colorMuted transition-colors duration-transitionSpeed">Send Message</button>
             </form>
         </div>
     </section>
-    <footer class="bg-primary text-white text-center py-md">
-        <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+    <footer class="bg-colorPrimary py-4">
+        <div class="container mx-auto text-center text-colorBackground">
+            &copy; 2023 My Portfolio
+        </div>
     </footer>
+    <script defer src="js/script.js"></script>
 </body>
 </html>
