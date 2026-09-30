@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
   const closeMenuButton = document.getElementById('close-menu-button');
-  const navLinks = document.querySelectorAll('#mobile-menu a');
+  const navLinks = document.querySelectorAll('.nav-link');
   const form = document.getElementById('contact-form');
   const nameInput = document.getElementById('name');
   const emailInput = document.getElementById('email');
@@ -13,21 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile Menu Toggle
   mobileMenuButton.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
-    mobileMenu.classList.toggle('block');
-    mobileMenu.setAttribute('aria-expanded', mobileMenu.classList.contains('block'));
+    mobileMenuButton.setAttribute('aria-expanded', mobileMenu.classList.contains('hidden') ? 'false' : 'true');
   });
 
   closeMenuButton.addEventListener('click', () => {
     mobileMenu.classList.add('hidden');
-    mobileMenu.classList.remove('block');
-    mobileMenu.setAttribute('aria-expanded', 'false');
+    mobileMenuButton.setAttribute('aria-expanded', 'false');
   });
 
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.add('hidden');
-      mobileMenu.classList.remove('block');
-      mobileMenu.setAttribute('aria-expanded', 'false');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
     });
   });
 
@@ -47,30 +44,24 @@ document.addEventListener('DOMContentLoaded', () => {
     let isValid = true;
 
     if (nameInput.value.trim() === '') {
-      isValid = false;
       nameInput.classList.add('border-red-500');
-      nameInput.setAttribute('aria-invalid', 'true');
+      isValid = false;
     } else {
       nameInput.classList.remove('border-red-500');
-      nameInput.setAttribute('aria-invalid', 'false');
     }
 
     if (!validateEmail(emailInput.value)) {
-      isValid = false;
       emailInput.classList.add('border-red-500');
-      emailInput.setAttribute('aria-invalid', 'true');
+      isValid = false;
     } else {
       emailInput.classList.remove('border-red-500');
-      emailInput.setAttribute('aria-invalid', 'false');
     }
 
     if (messageInput.value.trim() === '') {
-      isValid = false;
       messageInput.classList.add('border-red-500');
-      messageInput.setAttribute('aria-invalid', 'true');
+      isValid = false;
     } else {
       messageInput.classList.remove('border-red-500');
-      messageInput.setAttribute('aria-invalid', 'false');
     }
 
     if (isValid) {
@@ -92,17 +83,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Accessibility Enhancements
   const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-  const modal = document.getElementById('mobile-menu');
+  const modal = document.getElementById('contact-modal');
   const firstFocusableElement = modal.querySelectorAll(focusableElements)[0];
   const focusableContent = modal.querySelectorAll(focusableElements);
   const lastFocusableElement = focusableContent[focusableContent.length - 1];
 
-  mobileMenuButton.addEventListener('click', () => {
-    firstFocusableElement.focus();
-  });
-
-  modal.addEventListener('keydown', (e) => {
-    const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+  modal.addEventListener('keydown', function(e) {
+    let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
 
     if (!isTabPressed) {
       return;
@@ -118,6 +105,25 @@ document.addEventListener('DOMContentLoaded', () => {
         firstFocusableElement.focus();
         e.preventDefault();
       }
+    }
+  });
+
+  // ARIA Live Regions
+  const liveRegion = document.createElement('div');
+  liveRegion.setAttribute('aria-live', 'polite');
+  liveRegion.setAttribute('aria-atomic', 'true');
+  liveRegion.style.position = 'absolute';
+  liveRegion.style.clip = 'rect(0 0 0 0)';
+  liveRegion.style.height = '1px';
+  liveRegion.style.width = '1px';
+  liveRegion.style.margin = '-1px';
+  liveRegion.style.padding = '0';
+  liveRegion.style.border = '0';
+  document.body.appendChild(liveRegion);
+
+  alertMessage.addEventListener('transitionend', () => {
+    if (!alertMessage.classList.contains('hidden')) {
+      liveRegion.textContent = alertMessage.textContent;
     }
   });
 });
