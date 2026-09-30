@@ -3,85 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="body">
-    <header class="header">
-        <div class="container">
-            <a href="#" class="header__logo">My Portfolio</a>
-            <button id="menu-toggle" aria-label="Toggle navigation" class="header__toggle">
-                <span class="header__bar"></span>
-                <span class="header__bar"></span>
-                <span class="header__bar"></span>
-            </button>
-            <nav id="main-nav" class="header__nav" aria-label="Main Navigation">
-                <ul class="header__list">
-                    <li><a href="#hero" class="header__link">Home</a></li>
-                    <li><a href="#projects" class="header__link">Projects</a></li>
-                    <li><a href="#skills" class="header__link">Skills</a></li>
-                    <li><a href="#contact" class="header__link">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+<body class="bg-background text-text font-base">
+    <header class="hero-section bg-primary text-white py-16 text-center">
+        <h1 class="hero-title text-4xl font-heading mb-4">Welcome to My Portfolio</h1>
+        <p class="hero-description text-lg">Explore my projects, skills, and get in touch.</p>
+        <nav aria-label="Main Navigation">
+            <ul class="flex justify-center mt-8">
+                <li><a href="#projects" class="nav-link px-4 py-2 rounded hover:bg-muted">Projects</a></li>
+                <li><a href="#skills" class="nav-link px-4 py-2 rounded hover:bg-muted">Skills</a></li>
+                <li><a href="#contact" class="nav-link px-4 py-2 rounded hover:bg-muted">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <section id="hero" class="hero">
-        <div class="container">
-            <h1 class="hero__title">Welcome to My Portfolio</h1>
-            <p class="hero__description">Discover my projects, skills, and how to get in touch.</p>
-        </div>
-    </section>
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="projects__title">Projects</h2>
-            <div class="projects__grid">
-                <article class="project">
-                    <h3 class="project__name">Project One</h3>
-                    <p class="project__description">A brief description of project one.</p>
+    <main>
+        <section id="projects" class="projects-section py-16">
+            <h2 class="section-title text-3xl font-heading mb-8">Projects</h2>
+            <div class="projects-grid grid grid-cols-1 md:grid-cols-2 gap-8">
+                <article class="project-card p-8 bg-white shadow-md rounded">
+                    <h3 class="project-title text-xl font-heading mb-4">Project One</h3>
+                    <p class="project-description">Description of project one.</p>
                 </article>
-                <article class="project">
-                    <h3 class="project__name">Project Two</h3>
-                    <p class="project__description">A brief description of project two.</p>
-                </article>
-                <article class="project">
-                    <h3 class="project__name">Project Three</h3>
-                    <p class="project__description">A brief description of project three.</p>
+                <article class="project-card p-8 bg-white shadow-md rounded">
+                    <h3 class="project-title text-xl font-heading mb-4">Project Two</h3>
+                    <p class="project-description">Description of project two.</p>
                 </article>
             </div>
-        </div>
-    </section>
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="skills__title">Skills</h2>
-            <ul class="skills__list">
-                <li class="skill">HTML</li>
-                <li class="skill">CSS</li>
-                <li class="skill">JavaScript</li>
-                <li class="skill">Tailwind CSS</li>
+        </section>
+        <section id="skills" class="skills-section py-16">
+            <h2 class="section-title text-3xl font-heading mb-8">Skills</h2>
+            <ul class="skills-list flex flex-wrap gap-4">
+                <li class="skill-item bg-white shadow-md rounded p-4">HTML</li>
+                <li class="skill-item bg-white shadow-md rounded p-4">CSS</li>
+                <li class="skill-item bg-white shadow-md rounded p-4">JavaScript</li>
+                <li class="skill-item bg-white shadow-md rounded p-4">Tailwind CSS</li>
             </ul>
-        </div>
-    </section>
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="contact__title">Contact Me</h2>
-            <form id="contact-form" class="contact__form">
-                <label for="name" class="contact__label">Name</label>
-                <input type="text" id="name" name="name" required class="contact__input">
-                <label for="email" class="contact__label">Email</label>
-                <input type="email" id="email" name="email" required class="contact__input">
-                <label for="message" class="contact__label">Message</label>
-                <textarea id="message" name="message" rows="5" required class="contact__textarea"></textarea>
-                <button type="submit" class="contact__button">Send Message</button>
+        </section>
+        <section id="contact" class="contact-section py-16">
+            <h2 class="section-title text-3xl font-heading mb-8">Contact</h2>
+            <form id="contact-form" class="contact-form flex flex-col gap-4">
+                <label for="name" class="sr-only">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" class="contact-input p-4 border rounded" required>
+                <label for="email" class="sr-only">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" class="contact-input p-4 border rounded" required>
+                <label for="message" class="sr-only">Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Your Message" class="contact-input p-4 border rounded" required></textarea>
+                <button type="submit" class="contact-button bg-primary text-white p-4 rounded hover:bg-muted">Send Message</button>
             </form>
-            <div id="live-region" aria-live="polite" class="contact__live-region"></div>
-        </div>
-    </section>
-    <footer class="footer">
-        <div class="container">
-            <p class="footer__text">&copy; 2023 My Portfolio. All rights reserved.</p>
-        </div>
-    </footer>
-    <script src="./script.js" defer></script>
+        </section>
+    </main>
+    <script src="./script.js" type="module"></script>
 </body>
 </html>
