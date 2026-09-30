@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const emailInput = document.getElementById('email');
   const messageInput = document.getElementById('message');
   const submitButton = document.getElementById('submit-button');
-  const successMessage = document.getElementById('success-message');
-  const errorMessage = document.getElementById('error-message');
+  const alertMessage = document.getElementById('alert-message');
 
   // Mobile Menu Toggle
   mobileMenuButton.addEventListener('click', () => {
@@ -48,62 +47,61 @@ document.addEventListener('DOMContentLoaded', () => {
     let isValid = true;
 
     if (nameInput.value.trim() === '') {
-      nameInput.setCustomValidity('Name is required.');
       isValid = false;
+      nameInput.classList.add('border-red-500');
+      nameInput.setAttribute('aria-invalid', 'true');
     } else {
-      nameInput.setCustomValidity('');
+      nameInput.classList.remove('border-red-500');
+      nameInput.setAttribute('aria-invalid', 'false');
     }
 
-    if (!emailInput.validity.valid) {
-      emailInput.setCustomValidity('Please enter a valid email address.');
+    if (!validateEmail(emailInput.value)) {
       isValid = false;
+      emailInput.classList.add('border-red-500');
+      emailInput.setAttribute('aria-invalid', 'true');
     } else {
-      emailInput.setCustomValidity('');
+      emailInput.classList.remove('border-red-500');
+      emailInput.setAttribute('aria-invalid', 'false');
     }
 
     if (messageInput.value.trim() === '') {
-      messageInput.setCustomValidity('Message is required.');
       isValid = false;
+      messageInput.classList.add('border-red-500');
+      messageInput.setAttribute('aria-invalid', 'true');
     } else {
-      messageInput.setCustomValidity('');
+      messageInput.classList.remove('border-red-500');
+      messageInput.setAttribute('aria-invalid', 'false');
     }
 
     if (isValid) {
-      submitForm();
+      alertMessage.textContent = 'Thank you! Your message has been sent.';
+      alertMessage.classList.remove('hidden');
+      alertMessage.classList.add('bg-green-100', 'text-green-700');
+      form.reset();
+    } else {
+      alertMessage.textContent = 'Please fill in all fields correctly.';
+      alertMessage.classList.remove('hidden');
+      alertMessage.classList.add('bg-red-100', 'text-red-700');
     }
   });
 
-  function submitForm() {
-    // Simulate form submission
-    setTimeout(() => {
-      form.reset();
-      successMessage.classList.remove('hidden');
-      errorMessage.classList.add('hidden');
-      announce('Form submitted successfully!');
-    }, 1000);
+  function validateEmail(email) {
+    const re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return re.test(String(email).toLowerCase());
   }
 
   // Accessibility Enhancements
-  function announce(message) {
-    const liveRegion = document.createElement('div');
-    liveRegion.setAttribute('aria-live', 'assertive');
-    liveRegion.setAttribute('aria-atomic', 'true');
-    liveRegion.style.position = 'absolute';
-    liveRegion.style.left = '-9999px';
-    liveRegion.textContent = message;
-    document.body.appendChild(liveRegion);
-    setTimeout(() => {
-      document.body.removeChild(liveRegion);
-    }, 2000);
-  }
-
-  // Focus Trapping
   const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-  const firstFocusableElement = mobileMenu.querySelectorAll(focusableElements)[0];
-  const focusableContent = mobileMenu.querySelectorAll(focusableElements);
+  const modal = document.getElementById('mobile-menu');
+  const firstFocusableElement = modal.querySelectorAll(focusableElements)[0];
+  const focusableContent = modal.querySelectorAll(focusableElements);
   const lastFocusableElement = focusableContent[focusableContent.length - 1];
 
-  mobileMenu.addEventListener('keydown', (e) => {
+  mobileMenuButton.addEventListener('click', () => {
+    firstFocusableElement.focus();
+  });
+
+  modal.addEventListener('keydown', (e) => {
     const isTabPressed = e.key === 'Tab' || e.keyCode === 9;
 
     if (!isTabPressed) {
