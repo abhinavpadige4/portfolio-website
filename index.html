@@ -7,66 +7,70 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-colorBackground text-colorText font-base">
-    <header class="bg-colorPrimary py-4">
-        <div class="container mx-auto flex justify-between items-center">
+<body class="bg-colorBackground text-colorText font-sans">
+    <header class="bg-colorPrimary py-6">
+        <div class="container mx-auto px-4 flex justify-between items-center">
             <h1 class="text-2xl font-heading text-colorBackground">My Portfolio</h1>
             <button id="menu-toggle" aria-label="Toggle navigation" class="md:hidden focus:outline focus:outline-offset-2 focus:outline-2 focus:outline-colorPrimary">
-                <svg class="w-6 h-6 fill-current text-colorBackground" viewBox="0 0 24 24">
-                    <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
-                </svg>
+                <svg class="w-6 h-6 fill-current text-colorBackground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"/></svg>
             </button>
             <nav id="menu" class="hidden md:flex space-x-4">
-                <a href="#projects" class="text-colorBackground hover:text-colorMuted">Projects</a>
-                <a href="#skills" class="text-colorBackground hover:text-colorMuted">Skills</a>
-                <a href="#contact" class="text-colorBackground hover:text-colorMuted">Contact</a>
+                <a href="#projects" class="text-colorBackground hover:text-colorMuted transition-colors duration-transitionSpeed">Projects</a>
+                <a href="#skills" class="text-colorBackground hover:text-colorMuted transition-colors duration-transitionSpeed">Skills</a>
+                <a href="#contact" class="text-colorBackground hover:text-colorMuted transition-colors duration-transitionSpeed">Contact</a>
             </nav>
         </div>
     </header>
     <section id="hero" class="py-16 bg-cover bg-center" style="background-image: url('https://via.placeholder.com/1920x1080');">
-        <div class="container mx-auto text-center">
-            <h2 class="text-4xl font-heading text-colorBackground mb-4">Welcome to My Portfolio</h2>
-            <p class="text-lg text-colorBackground">Discover my projects, skills, and how to get in touch.</p>
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-heading text-white mb-4">Welcome to My Portfolio</h2>
+            <p class="text-xl text-white opacity-80 mb-8">Discover my projects, skills, and how to get in touch.</p>
+            <a href="#projects" class="bg-colorPrimary text-white px-6 py-3 rounded-full shadow-lg hover:bg-opacity-80 transition-opacity duration-transitionSpeed">View Projects</a>
         </div>
     </section>
     <section id="projects" class="py-16">
-        <div class="container mx-auto">
+        <div class="container mx-auto px-4">
             <h2 class="text-3xl font-heading mb-8">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <article class="bg-colorMuted p-8 rounded-lg shadow-md">
-                    <h3 class="text-xl font-heading mb-4">Project One</h3>
-                    <p class="mb-4">A brief description of project one, highlighting key features and technologies used.</p>
-                    <a href="#" class="text-colorPrimary hover:text-colorMuted">Learn More</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-heading mb-2">Project One</h3>
+                    <p class="text-colorMuted mb-4">A brief description of project one, highlighting key features and technologies used.</p>
+                    <a href="#" class="text-colorPrimary hover:text-colorMuted transition-colors duration-transitionSpeed">Learn More</a>
                 </article>
-                <article class="bg-colorMuted p-8 rounded-lg shadow-md">
-                    <h3 class="text-xl font-heading mb-4">Project Two</h3>
-                    <p class="mb-4">A brief description of project two, highlighting key features and technologies used.</p>
-                    <a href="#" class="text-colorPrimary hover:text-colorMuted">Learn More</a>
+                <article class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-heading mb-2">Project Two</h3>
+                    <p class="text-colorMuted mb-4">A brief description of project two, highlighting key features and technologies used.</p>
+                    <a href="#" class="text-colorPrimary hover:text-colorMuted transition-colors duration-transitionSpeed">Learn More</a>
+                </article>
+                <article class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-heading mb-2">Project Three</h3>
+                    <p class="text-colorMuted mb-4">A brief description of project three, highlighting key features and technologies used.</p>
+                    <a href="#" class="text-colorPrimary hover:text-colorMuted transition-colors duration-transitionSpeed">Learn More</a>
                 </article>
             </div>
         </div>
     </section>
-    <section id="skills" class="py-16 bg-colorMuted">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-heading mb-8 text-colorBackground">Skills</h2>
-            <ul class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <li class="bg-white p-8 rounded-lg shadow-md">
-                    <h3 class="text-xl font-heading mb-4 text-colorText">HTML/CSS</h3>
-                    <p class="text-colorText">Proficient in creating responsive and accessible web designs using HTML and CSS.</p>
+    <section id="skills" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-heading mb-8">Skills</h2>
+            <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <li class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-heading mb-2">HTML & CSS</h3>
+                    <p class="text-colorMuted">Expertise in creating responsive and accessible web designs using HTML and CSS.</p>
                 </li>
-                <li class="bg-white p-8 rounded-lg shadow-md">
-                    <h3 class="text-xl font-heading mb-4 text-colorText">JavaScript</h3>
-                    <p class="text-colorText">Experienced in writing clean, efficient JavaScript for interactive web applications.</p>
+                <li class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-heading mb-2">JavaScript</h3>
+                    <p class="text-colorMuted">Proficient in writing clean, efficient JavaScript for interactive web applications.</p>
                 </li>
-                <li class="bg-white p-8 rounded-lg shadow-md">
-                    <h3 class="text-xl font-heading mb-4 text-colorText">Tailwind CSS</h3>
-                    <p class="text-colorText">Skilled in using Tailwind CSS for rapid UI development and consistent styling.</p>
+                <li class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-heading mb-2">Tailwind CSS</h3>
+                    <p class="text-colorMuted">Experience in using Tailwind CSS for rapid UI development and consistent styling.</p>
                 </li>
             </ul>
         </div>
     </section>
     <section id="contact" class="py-16">
-        <div class="container mx-auto">
+        <div class="container mx-auto px-4">
             <h2 class="text-3xl font-heading mb-8">Contact</h2>
             <form id="contact-form" class="max-w-md mx-auto">
                 <div class="mb-4">
@@ -81,13 +85,13 @@
                     <label for="message" class="block text-sm font-medium mb-2">Message</label>
                     <textarea id="message" name="message" rows="4" required class="w-full p-3 border border-colorMuted rounded-lg focus:outline focus:outline-offset-2 focus:outline-2 focus:outline-colorPrimary"></textarea>
                 </div>
-                <button type="submit" class="bg-colorPrimary text-colorBackground px-4 py-2 rounded-lg hover:bg-colorMuted transition-colors duration-transitionSpeed">Send Message</button>
+                <button type="submit" class="bg-colorPrimary text-white px-6 py-3 rounded-full shadow-lg hover:bg-opacity-80 transition-opacity duration-transitionSpeed">Send Message</button>
             </form>
         </div>
     </section>
     <footer class="bg-colorPrimary py-4">
-        <div class="container mx-auto text-center text-colorBackground">
-            &copy; 2023 My Portfolio
+        <div class="container mx-auto px-4 text-center text-white">
+            &copy; 2023 My Portfolio. All rights reserved.
         </div>
     </footer>
     <script defer src="js/script.js"></script>
