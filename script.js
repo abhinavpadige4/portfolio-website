@@ -1,70 +1,72 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const navLinks = document.querySelectorAll('.nav-link');
+document.addEventListener('DOMContentLoaded', () => {
+  const smoothScroll = (target) => {
+    document.querySelector(target).scrollIntoView({
+      behavior: 'smooth'
+    });
+  };
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      smoothScroll(this.getAttribute('href'));
+    });
+  });
+
   const form = document.getElementById('contact-form');
   const nameInput = document.getElementById('name');
   const emailInput = document.getElementById('email');
   const messageInput = document.getElementById('message');
-  const alertRegion = document.getElementById('alert-region');
+  const errorContainer = document.getElementById('error-container');
 
-  mobileMenuButton.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    mobileMenuButton.setAttribute('aria-expanded', mobileMenu.classList.contains('hidden') ? 'false' : 'true');
-  });
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-      mobileMenuButton.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  form.addEventListener('submit', function(event) {
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
     let isValid = true;
-    if (!nameInput.value.trim()) {
+    errorContainer.textContent = '';
+
+    if (nameInput.value.trim() === '') {
       isValid = false;
-      nameInput.classList.add('border-red-500');
-    } else {
-      nameInput.classList.remove('border-red-500');
+      errorContainer.textContent += 'Name is required.\n';
     }
+
     if (!validateEmail(emailInput.value)) {
       isValid = false;
-      emailInput.classList.add('border-red-500');
-    } else {
-      emailInput.classList.remove('border-red-500');
+      errorContainer.textContent += 'Valid email is required.\n';
     }
-    if (!messageInput.value.trim()) {
+
+    if (messageInput.value.trim() === '') {
       isValid = false;
-      messageInput.classList.add('border-red-500');
-    } else {
-      messageInput.classList.remove('border-red-500');
+      errorContainer.textContent += 'Message is required.\n';
     }
+
     if (isValid) {
-      showAlert('success', 'Message sent successfully!');
+      alert('Form submitted successfully!');
       form.reset();
-    } else {
-      showAlert('error', 'Please fill in all fields correctly.');
     }
   });
 
-  function validateEmail(email) {
+  const validateEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
+  };
 
-  function showAlert(type, message) {
-    alertRegion.textContent = message;
-    alertRegion.setAttribute('aria-live', 'assertive');
-    alertRegion.classList.remove('bg-green-100', 'bg-red-100', 'text-green-800', 'text-red-800');
-    if (type === 'success') {
-      alertRegion.classList.add('bg-green-100', 'text-green-800');
-    } else {
-      alertRegion.classList.add('bg-red-100', 'text-red-800');
+  // Accessibility enhancements
+  const focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+  const focusableElements = document.querySelectorAll(focusableElementsString);
+  const firstFocusableElement = focusableElements[0];
+  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+      if (e.shiftKey) { // shift + tab
+        if (document.activeElement === firstFocusableElement) {
+          lastFocusableElement.focus();
+          e.preventDefault();
+        }
+      } else { // tab
+        if (document.activeElement === lastFocusableElement) {
+          firstFocusableElement.focus();
+          e.preventDefault();
+        }
+      }
     }
-    setTimeout(() => {
-      alertRegion.textContent = '';
-      alertRegion.setAttribute('aria-live', 'off');
-    }, 3000);
-  }
+  });
 });
