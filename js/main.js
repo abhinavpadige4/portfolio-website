@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
+
       document.querySelector(this.getAttribute('href')).scrollIntoView({
         behavior: 'smooth'
       });
@@ -17,12 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const form = document.querySelector('#contact-form');
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    let isValid = true;
     const name = document.querySelector('#name').value.trim();
     const email = document.querySelector('#email').value.trim();
     const message = document.querySelector('#message').value.trim();
-    let isValid = true;
 
     if (name === '') {
       isValid = false;
