@@ -3,97 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/main.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-colorBackground text-colorText font-sans">
-    <header class="bg-colorPrimary py-6">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <h1 class="text-2xl font-heading text-colorBackground">My Portfolio</h1>
-            <button id="menu-toggle" aria-label="Toggle navigation" class="md:hidden focus:outline focus:outline-offset-2 focus:outline-2 focus:outline-colorPrimary">
-                <svg class="w-6 h-6 fill-current text-colorBackground" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"/></svg>
-            </button>
-            <nav id="menu" class="hidden md:flex space-x-4">
-                <a href="#projects" class="text-colorBackground hover:text-colorMuted transition-colors duration-transitionSpeed">Projects</a>
-                <a href="#skills" class="text-colorBackground hover:text-colorMuted transition-colors duration-transitionSpeed">Skills</a>
-                <a href="#contact" class="text-colorBackground hover:text-colorMuted transition-colors duration-transitionSpeed">Contact</a>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">My Portfolio</a>
+                <button id="menu-toggle" aria-label="Toggle Menu" class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul id="nav-menu" class="nav-menu">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </nav>
         </div>
     </header>
-    <section id="hero" class="py-16 bg-cover bg-center" style="background-image: url('https://via.placeholder.com/1920x1080');">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-heading text-white mb-4">Welcome to My Portfolio</h2>
-            <p class="text-xl text-white opacity-80 mb-8">Discover my projects, skills, and how to get in touch.</p>
-            <a href="#projects" class="bg-colorPrimary text-white px-6 py-3 rounded-full shadow-lg hover:bg-opacity-80 transition-opacity duration-transitionSpeed">View Projects</a>
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1>Welcome to My Portfolio</h1>
+            <p>Discover my projects, skills, and how to get in touch.</p>
         </div>
     </section>
-    <section id="projects" class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-heading mb-8">Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <article class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-heading mb-2">Project One</h3>
-                    <p class="text-colorMuted mb-4">A brief description of project one, highlighting key features and technologies used.</p>
-                    <a href="#" class="text-colorPrimary hover:text-colorMuted transition-colors duration-transitionSpeed">Learn More</a>
-                </article>
-                <article class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-heading mb-2">Project Two</h3>
-                    <p class="text-colorMuted mb-4">A brief description of project two, highlighting key features and technologies used.</p>
-                    <a href="#" class="text-colorPrimary hover:text-colorMuted transition-colors duration-transitionSpeed">Learn More</a>
-                </article>
-                <article class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-heading mb-2">Project Three</h3>
-                    <p class="text-colorMuted mb-4">A brief description of project three, highlighting key features and technologies used.</p>
-                    <a href="#" class="text-colorPrimary hover:text-colorMuted transition-colors duration-transitionSpeed">Learn More</a>
-                </article>
-            </div>
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Hello! I'm a passionate web developer with over 5 years of experience in building dynamic and user-friendly websites. I specialize in front-end development and have a strong background in JavaScript, HTML, and CSS.</p>
         </div>
     </section>
-    <section id="skills" class="py-16 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-heading mb-8">Skills</h2>
-            <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <li class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-heading mb-2">HTML & CSS</h3>
-                    <p class="text-colorMuted">Expertise in creating responsive and accessible web designs using HTML and CSS.</p>
-                </li>
-                <li class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-heading mb-2">JavaScript</h3>
-                    <p class="text-colorMuted">Proficient in writing clean, efficient JavaScript for interactive web applications.</p>
-                </li>
-                <li class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-heading mb-2">Tailwind CSS</h3>
-                    <p class="text-colorMuted">Experience in using Tailwind CSS for rapid UI development and consistent styling.</p>
-                </li>
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Tailwind CSS</li>
             </ul>
         </div>
     </section>
-    <section id="contact" class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-heading mb-8">Contact</h2>
-            <form id="contact-form" class="max-w-md mx-auto">
-                <div class="mb-4">
-                    <label for="name" class="block text-sm font-medium mb-2">Name</label>
-                    <input type="text" id="name" name="name" required class="w-full p-3 border border-colorMuted rounded-lg focus:outline focus:outline-offset-2 focus:outline-2 focus:outline-colorPrimary">
-                </div>
-                <div class="mb-4">
-                    <label for="email" class="block text-sm font-medium mb-2">Email</label>
-                    <input type="email" id="email" name="email" required class="w-full p-3 border border-colorMuted rounded-lg focus:outline focus:outline-offset-2 focus:outline-2 focus:outline-colorPrimary">
-                </div>
-                <div class="mb-4">
-                    <label for="message" class="block text-sm font-medium mb-2">Message</label>
-                    <textarea id="message" name="message" rows="4" required class="w-full p-3 border border-colorMuted rounded-lg focus:outline focus:outline-offset-2 focus:outline-2 focus:outline-colorPrimary"></textarea>
-                </div>
-                <button type="submit" class="bg-colorPrimary text-white px-6 py-3 rounded-full shadow-lg hover:bg-opacity-80 transition-opacity duration-transitionSpeed">Send Message</button>
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Project 1</h3>
+                <p>A brief description of project 1, highlighting key features and technologies used.</p>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>A brief description of project 2, highlighting key features and technologies used.</p>
+            </div>
+            <div class="project">
+                <h3>Project 3</h3>
+                <p>A brief description of project 3, highlighting key features and technologies used.</p>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
             </form>
         </div>
     </section>
-    <footer class="bg-colorPrimary py-4">
-        <div class="container mx-auto px-4 text-center text-white">
-            &copy; 2023 My Portfolio. All rights reserved.
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 My Portfolio. All rights reserved.</p>
         </div>
     </footer>
-    <script defer src="js/script.js"></script>
 </body>
 </html>
